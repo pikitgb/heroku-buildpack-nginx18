@@ -53,8 +53,17 @@ http {
   #    server 127.0.0.1:<%= ENV["PORT"] %>;
   #}
 
+	map $sent_http_content_type $expires {
+			default                    off;
+			text/html                  epoch;
+			text/css                   max;
+			application/javascript     max;
+			~image/                    max;
+	}
+
 	server {
 		listen <%= ENV["PORT"] %>;
+		expires $expires;
 		server_name _;
 		keepalive_timeout 65;
 
