@@ -41,12 +41,18 @@ http {
 	client_body_timeout 60;
 
  	#upstream app_server {
-  #		server unix:/tmp/nginx.socket fail_timeout=0;
+ 	#  server unix:/tmp/nginx.socket fail_timeout=0;
 	#}
 
-	upstream adonis {
-      server 127.0.0.1:<%= ENV["PORT"] %>;
-  }
+
+ 	upstream adonis {
+ 	  server unix:/tmp/nginx.socket fail_timeout=0;
+	}
+
+
+	#upstream adonis {
+  #    server 127.0.0.1:<%= ENV["PORT"] %>;
+  #}
 
 	server {
 		listen <%= ENV["PORT"] %>;

@@ -22,7 +22,7 @@ temp_dir=$(mktemp -d /tmp/nginx.XXXXXXXXXX)
 echo "Serving files from /tmp on $PORT"
 cd /tmp
 #python -m SimpleHTTPServer $PORT &
-python -m SimpleHTTPServer $(($PORT+1)) &
+python -m SimpleHTTPServer $(($PORT)) &
 
 
 
